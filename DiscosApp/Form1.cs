@@ -7,20 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dominio;
+using negocio;
 
 namespace discosApp
 {
     public partial class FormDiscos : Form
     {
-        // Atributo
+        // Atributos
         private List<Disco> listaDiscos;
 
+        // Constructor
         public FormDiscos()
         {
             InitializeComponent();
         }
 
-        private void FormDiscos_Load(object sender, EventArgs e)
+
+        // Metodos
+        private void cargarData()
         {
             DiscoNegocio negocio = new DiscoNegocio();
             listaDiscos = negocio.listar();
@@ -29,13 +34,18 @@ namespace discosApp
             cargarImagen(listaDiscos[0].ImagenTapa);
         }
 
+        private void FormDiscos_Load(object sender, EventArgs e)
+        {
+            cargarData();
+            dgvDiscos.ColumnHeadersHeight = 50;
+
+        }
+
         private void dgvDiscos_SelectionChanged(object sender, EventArgs e)
         {
             Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
             cargarImagen(seleccionado.ImagenTapa);
         }
-
-        // Metodo
 
         private void cargarImagen(string imagen)
         {
@@ -48,5 +58,15 @@ namespace discosApp
                 pbxDisco.Load("https://www.pngarts.com/files/3/CD-Transparent-Image.png");
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaDisco altaDisco = new frmAltaDisco();
+            altaDisco.ShowDialog();
+            cargarData();
+
+        }
+
+
     }
 }
