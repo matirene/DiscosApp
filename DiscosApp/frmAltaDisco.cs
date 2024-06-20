@@ -57,16 +57,7 @@ namespace discosApp
 
         private void frmAltaDisco_Load(object sender, EventArgs e)
         {
-            EstiloNegocio negocio = new EstiloNegocio();
-            NegocioTipoEdicion negocioTE = new NegocioTipoEdicion();
-
-            cbEstilo.DataSource = negocio.listar();
-            cbEstilo.ValueMember = "Id";
-            cbEstilo.DisplayMember = "Descripcion";
-
-            cbEdicion.DataSource = negocioTE.listar();
-            cbEdicion.ValueMember = "Id";
-            cbEdicion.DisplayMember = "Descripcion";
+            cargarComboBox();
         }
 
         private void btnCancelarAlta_Click(object sender, EventArgs e)
@@ -79,6 +70,20 @@ namespace discosApp
             cargarImagen(txtImagen.Text);
         }
 
+        private void cargarComboBox()
+        {
+            EstiloNegocio negocio = new EstiloNegocio();
+            NegocioTipoEdicion negocioTE = new NegocioTipoEdicion();
+
+            cbEstilo.DataSource = negocio.listar();
+            cbEstilo.ValueMember = "Id";
+            cbEstilo.DisplayMember = "Descripcion";
+
+            cbEdicion.DataSource = negocioTE.listar();
+            cbEdicion.ValueMember = "Id";
+            cbEdicion.DisplayMember = "Descripcion";
+        }
+
         private void cargarImagen(string imagen)
         {
             try
@@ -87,7 +92,7 @@ namespace discosApp
             }
             catch (Exception)
             {
-                pbImagenAlta.Load("https://www.pngarts.com/files/3/CD-Transparent-Image.png");
+                pbImagenAlta.Load("https://i.postimg.cc/05tBmPPt/CD-Transparent-Image-1.png");
             }
         }
     }

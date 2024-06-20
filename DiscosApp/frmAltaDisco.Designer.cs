@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaDisco));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.txtTitulo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCanciones = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.nudCanciones = new System.Windows.Forms.NumericUpDown();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtImagen = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblImagen = new System.Windows.Forms.Label();
             this.lblEstilo = new System.Windows.Forms.Label();
             this.lblEdicion = new System.Windows.Forms.Label();
             this.cbEstilo = new System.Windows.Forms.ComboBox();
@@ -67,17 +67,17 @@
             this.txtTitulo.Location = new System.Drawing.Point(110, 35);
             this.txtTitulo.Name = "txtTitulo";
             this.txtTitulo.Size = new System.Drawing.Size(145, 24);
-            this.txtTitulo.TabIndex = 1;
+            this.txtTitulo.TabIndex = 0;
             // 
-            // label1
+            // lblCanciones
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 154);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Canciones";
+            this.lblCanciones.AutoSize = true;
+            this.lblCanciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCanciones.Location = new System.Drawing.Point(29, 154);
+            this.lblCanciones.Name = "lblCanciones";
+            this.lblCanciones.Size = new System.Drawing.Size(71, 16);
+            this.lblCanciones.TabIndex = 2;
+            this.lblCanciones.Text = "Canciones";
             // 
             // lblFecha
             // 
@@ -94,8 +94,8 @@
             this.nudCanciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudCanciones.Location = new System.Drawing.Point(110, 150);
             this.nudCanciones.Name = "nudCanciones";
-            this.nudCanciones.Size = new System.Drawing.Size(65, 24);
-            this.nudCanciones.TabIndex = 6;
+            this.nudCanciones.Size = new System.Drawing.Size(72, 24);
+            this.nudCanciones.TabIndex = 3;
             this.nudCanciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtpFecha
@@ -106,7 +106,7 @@
             this.dtpFecha.Location = new System.Drawing.Point(110, 110);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(145, 24);
-            this.dtpFecha.TabIndex = 7;
+            this.dtpFecha.TabIndex = 2;
             // 
             // txtImagen
             // 
@@ -115,18 +115,18 @@
             this.txtImagen.Location = new System.Drawing.Point(110, 189);
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(145, 24);
-            this.txtImagen.TabIndex = 9;
+            this.txtImagen.TabIndex = 4;
             this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
-            // label2
+            // lblImagen
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 193);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Imagen";
+            this.lblImagen.AutoSize = true;
+            this.lblImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImagen.Location = new System.Drawing.Point(29, 193);
+            this.lblImagen.Name = "lblImagen";
+            this.lblImagen.Size = new System.Drawing.Size(52, 16);
+            this.lblImagen.TabIndex = 8;
+            this.lblImagen.Text = "Imagen";
             // 
             // lblEstilo
             // 
@@ -150,21 +150,23 @@
             // 
             // cbEstilo
             // 
+            this.cbEstilo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstilo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstilo.FormattingEnabled = true;
             this.cbEstilo.Location = new System.Drawing.Point(110, 225);
             this.cbEstilo.Name = "cbEstilo";
             this.cbEstilo.Size = new System.Drawing.Size(145, 26);
-            this.cbEstilo.TabIndex = 12;
+            this.cbEstilo.TabIndex = 5;
             // 
             // cbEdicion
             // 
+            this.cbEdicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEdicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEdicion.FormattingEnabled = true;
             this.cbEdicion.Location = new System.Drawing.Point(110, 264);
             this.cbEdicion.Name = "cbEdicion";
             this.cbEdicion.Size = new System.Drawing.Size(145, 26);
-            this.cbEdicion.TabIndex = 13;
+            this.cbEdicion.TabIndex = 6;
             // 
             // pbImagenAlta
             // 
@@ -181,17 +183,17 @@
             this.btnAgregarAlta.Location = new System.Drawing.Point(34, 317);
             this.btnAgregarAlta.Name = "btnAgregarAlta";
             this.btnAgregarAlta.Size = new System.Drawing.Size(92, 37);
-            this.btnAgregarAlta.TabIndex = 15;
+            this.btnAgregarAlta.TabIndex = 7;
             this.btnAgregarAlta.Text = "Agregar";
             this.btnAgregarAlta.UseVisualStyleBackColor = true;
             this.btnAgregarAlta.Click += new System.EventHandler(this.btnAgregarAlta_Click);
             // 
             // btnCancelarAlta
             // 
-            this.btnCancelarAlta.Location = new System.Drawing.Point(163, 317);
+            this.btnCancelarAlta.Location = new System.Drawing.Point(154, 317);
             this.btnCancelarAlta.Name = "btnCancelarAlta";
             this.btnCancelarAlta.Size = new System.Drawing.Size(92, 37);
-            this.btnCancelarAlta.TabIndex = 16;
+            this.btnCancelarAlta.TabIndex = 8;
             this.btnCancelarAlta.Text = "Cancelar";
             this.btnCancelarAlta.UseVisualStyleBackColor = true;
             this.btnCancelarAlta.Click += new System.EventHandler(this.btnCancelarAlta_Click);
@@ -203,7 +205,7 @@
             this.txtAutor.Location = new System.Drawing.Point(110, 74);
             this.txtAutor.Name = "txtAutor";
             this.txtAutor.Size = new System.Drawing.Size(145, 24);
-            this.txtAutor.TabIndex = 18;
+            this.txtAutor.TabIndex = 1;
             // 
             // lblAutor
             // 
@@ -230,11 +232,11 @@
             this.Controls.Add(this.lblEdicion);
             this.Controls.Add(this.lblEstilo);
             this.Controls.Add(this.txtImagen);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblImagen);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.nudCanciones);
             this.Controls.Add(this.lblFecha);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCanciones);
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -254,12 +256,12 @@
 
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.TextBox txtTitulo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCanciones;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.NumericUpDown nudCanciones;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.TextBox txtImagen;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.Label lblEstilo;
         private System.Windows.Forms.Label lblEdicion;
         private System.Windows.Forms.ComboBox cbEstilo;

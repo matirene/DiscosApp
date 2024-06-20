@@ -83,5 +83,55 @@ namespace negocio
                 datos.closeConexion();
             }
         }
+
+        public void modificar(Disco disco)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setQuery("UPDATE DISCOS SET Titulo = @titulo, Autor = @autor, FechaLanzamiento = @fecha, CantidadCanciones = @canciones, UrlImagenTapa = @imagen, IdEstilo = @estilo, IdTipoEdicion = @edicion WHERE Id = @id;");
+
+                datos.setParameters("@titulo", disco.Titulo);
+                datos.setParameters("@autor", disco.Autor);
+                datos.setParameters("@fecha", disco.FechaLanzamiento);
+                datos.setParameters("@canciones", disco.CantidadCanciones);
+                datos.setParameters("@imagen", disco.ImagenTapa);
+                datos.setParameters("@estilo", disco.Estilo.Id);
+                datos.setParameters("@edicion", disco.TipoEdicion.Id);
+                datos.setParameters("@id", disco.Id);
+
+                datos.executeAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex; 
+            }
+            finally { datos.closeConexion(); }
+        }
+
+        public void eliminar(Disco disco)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setQuery("DELETE FROM DISCOS WHERE Id = @id;");
+                datos.setParameters("@id", disco.Id);
+
+                datos.executeAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.closeConexion();
+            }
+        }
     }
 }

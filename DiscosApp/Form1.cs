@@ -25,14 +25,6 @@ namespace discosApp
 
 
         // Metodos
-        private void cargarData()
-        {
-            DiscoNegocio negocio = new DiscoNegocio();
-            listaDiscos = negocio.listar();
-            dgvDiscos.DataSource = listaDiscos;
-            dgvDiscos.Columns["ImagenTapa"].Visible = false;
-            cargarImagen(listaDiscos[0].ImagenTapa);
-        }
 
         private void FormDiscos_Load(object sender, EventArgs e)
         {
@@ -47,16 +39,9 @@ namespace discosApp
             cargarImagen(seleccionado.ImagenTapa);
         }
 
-        private void cargarImagen(string imagen)
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                pbxDisco.Load(imagen);
-            }
-            catch (Exception)
-            {
-                pbxDisco.Load("https://www.pngarts.com/files/3/CD-Transparent-Image.png");
-            }
+            cargarData();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -67,6 +52,50 @@ namespace discosApp
 
         }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
+            frmModificarDisco modificarDisco = new frmModificarDisco(seleccionado);
+            modificarDisco.ShowDialog();
+            cargarData();
+        }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
+
+            DialogResult resultado = MessageBox.Show("Estas seguro de eliminar el disco " + seleccionado.Titulo.ToUpper() + " ?", "Eliminar Disco", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (resultado == DialogResult.No)
+                return;
+
+            DiscoNegocio negocio = new DiscoNegocio();
+            negocio.eliminar(seleccionado);
+
+            MessageBox.Show("Disco eliminado.", "Eliminar Disco", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            cargarData();
+        }
+
+        private void cargarData()
+        {
+            DiscoNegocio negocio = new DiscoNegocio();
+            listaDiscos = negocio.listar();
+            dgvDiscos.DataSource = listaDiscos;
+            dgvDiscos.Columns["ImagenTapa"].Visible = false;
+            cargarImagen(listaDiscos[0].ImagenTapa);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxDisco.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxDisco.Load("https://i.postimg.cc/05tBmPPt/CD-Transparent-Image-1.png");
+            }
+        }
     }
 }
