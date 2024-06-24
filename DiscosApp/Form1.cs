@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,27 +55,51 @@ namespace discosApp
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
-            frmModificarDisco modificarDisco = new frmModificarDisco(seleccionado);
-            modificarDisco.ShowDialog();
-            cargarData();
+            if(dgvDiscos.CurrentRow != null)
+            {
+                Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
+                frmModificarDisco modificarDisco = new frmModificarDisco(seleccionado);
+                modificarDisco.ShowDialog();
+
+                cargarData();
+
+                //ELiminamos la imagen anterior.
+                if(File.Exists(modificarDisco.imageOld))
+                    File.Delete(modificarDisco.imageOld);
+
+            } else
+            {
+                MessageBox.Show("No hay un disco para modificar.", "Modificar Disco", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
+            if(dgvDiscos.CurrentRow != null)
+            {
+                Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
 
-            DialogResult resultado = MessageBox.Show("Estas seguro de eliminar el disco " + seleccionado.Titulo.ToUpper() + " ?", "Eliminar Disco", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult resultado = MessageBox.Show("Estas seguro de eliminar el disco " + seleccionado.Titulo.ToUpper() + " ?", "Eliminar Disco", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (resultado == DialogResult.No)
-                return;
+                if (resultado == DialogResult.No)
+                    return;
 
-            DiscoNegocio negocio = new DiscoNegocio();
-            negocio.eliminar(seleccionado);
+                DiscoNegocio negocio = new DiscoNegocio();
+                negocio.eliminar(seleccionado);
 
-            MessageBox.Show("Disco eliminado.", "Eliminar Disco", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Disco eliminado.", "Eliminar Disco", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            cargarData();
+                cargarData();
+
+                if (File.Exists(seleccionado.ImagenTapa))
+                    File.Delete(seleccionado.ImagenTapa);
+
+            } else
+            {
+                MessageBox.Show("No hay disco para eliminar.", "Eliminar Disco", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void cargarData()
@@ -96,6 +121,23 @@ namespace discosApp
             {
                 pbxDisco.Load("https://i.postimg.cc/05tBmPPt/CD-Transparent-Image-1.png");
             }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            List<Disco> listaFiltrada;
+
+            string filtro = txtFiltro.Text;
+
+            if (filtro.Length > 0)
+                listaFiltrada = listaDiscos.FindAll(disco => disco.Titulo.ToUpper().Trim().Contains(filtro.ToUpper().Trim()) || disco.Autor.ToUpper().Trim().Contains(filtro.ToUpper().Trim()) || disco.Estilo.Descripcion.ToUpper().Trim().Contains(filtro.ToUpper().Trim()));
+            else
+                listaFiltrada = listaDiscos;
+
+            dgvDiscos.DataSource = null;
+            dgvDiscos.DataSource= listaFiltrada;
+            dgvDiscos.Columns["ImagenTapa"].Visible = false;
+
         }
     }
 }

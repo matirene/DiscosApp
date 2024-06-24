@@ -46,8 +46,10 @@
             this.lblCancionModificar = new System.Windows.Forms.Label();
             this.txtTituloModificar = new System.Windows.Forms.TextBox();
             this.lblTituloModificar = new System.Windows.Forms.Label();
+            this.pbAgregarImagenMod = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenModificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCancionesModificar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregarImagenMod)).BeginInit();
             this.SuspendLayout();
             // 
             // txtAutorModificar
@@ -217,11 +219,24 @@
             this.lblTituloModificar.TabIndex = 18;
             this.lblTituloModificar.Text = "Titulo";
             // 
+            // pbAgregarImagenMod
+            // 
+            this.pbAgregarImagenMod.Location = new System.Drawing.Point(260, 186);
+            this.pbAgregarImagenMod.Name = "pbAgregarImagenMod";
+            this.pbAgregarImagenMod.Size = new System.Drawing.Size(24, 24);
+            this.pbAgregarImagenMod.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAgregarImagenMod.TabIndex = 35;
+            this.pbAgregarImagenMod.TabStop = false;
+            this.pbAgregarImagenMod.Click += new System.EventHandler(this.pbAgregarImagenMod_Click);
+            this.pbAgregarImagenMod.MouseLeave += new System.EventHandler(this.pbAgregarImagenMod_MouseLeave);
+            this.pbAgregarImagenMod.MouseHover += new System.EventHandler(this.pbAgregarImagenMod_MouseHover);
+            // 
             // frmModificarDisco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 369);
+            this.Controls.Add(this.pbAgregarImagenMod);
             this.Controls.Add(this.txtAutorModificar);
             this.Controls.Add(this.lblAutorModificar);
             this.Controls.Add(this.btnCancelarFrm);
@@ -247,6 +262,7 @@
             this.Load += new System.EventHandler(this.frmModificarDisco_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenModificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCancionesModificar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregarImagenMod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +287,6 @@
         private System.Windows.Forms.Label lblCancionModificar;
         private System.Windows.Forms.TextBox txtTituloModificar;
         private System.Windows.Forms.Label lblTituloModificar;
+        private System.Windows.Forms.PictureBox pbAgregarImagenMod;
     }
 }

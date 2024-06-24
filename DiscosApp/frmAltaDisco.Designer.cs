@@ -46,8 +46,10 @@
             this.btnCancelarAlta = new System.Windows.Forms.Button();
             this.txtAutor = new System.Windows.Forms.TextBox();
             this.lblAutor = new System.Windows.Forms.Label();
+            this.pbAgregarImagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudCanciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenAlta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregarImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -217,11 +219,24 @@
             this.lblAutor.TabIndex = 17;
             this.lblAutor.Text = "Autor";
             // 
+            // pbAgregarImagen
+            // 
+            this.pbAgregarImagen.Location = new System.Drawing.Point(261, 189);
+            this.pbAgregarImagen.Name = "pbAgregarImagen";
+            this.pbAgregarImagen.Size = new System.Drawing.Size(24, 24);
+            this.pbAgregarImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAgregarImagen.TabIndex = 18;
+            this.pbAgregarImagen.TabStop = false;
+            this.pbAgregarImagen.Click += new System.EventHandler(this.pbAgregarImagen_Click);
+            this.pbAgregarImagen.MouseLeave += new System.EventHandler(this.pbAgregarImagen_MouseLeave);
+            this.pbAgregarImagen.MouseHover += new System.EventHandler(this.pbAgregarImagen_MouseHover);
+            // 
             // frmAltaDisco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 369);
+            this.Controls.Add(this.pbAgregarImagen);
             this.Controls.Add(this.txtAutor);
             this.Controls.Add(this.lblAutor);
             this.Controls.Add(this.btnCancelarAlta);
@@ -247,6 +262,7 @@
             this.Load += new System.EventHandler(this.frmAltaDisco_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCanciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenAlta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregarImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +287,6 @@
         private System.Windows.Forms.Button btnCancelarAlta;
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.Label lblAutor;
+        private System.Windows.Forms.PictureBox pbAgregarImagen;
     }
 }
